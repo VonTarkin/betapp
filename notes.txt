@@ -1,0 +1,9 @@
+docker compose up -d
+docker compose down
+mvn spring-boot:run
+
+http://localhost:8080/actuator/health
+http://localhost:8080/api/ping
+
+docker compose up -d
+docker ps    czy widać postgres:16 i port 5432?
