@@ -1,2 +1,5 @@
+com\example\betapp\entity\Bet.class
 com\example\betapp\TestController.class
+com\example\betapp\repository\BetRepository.class
+com\example\betapp\controller\BetController.class
 com\example\betapp\BetAppApplication.class
