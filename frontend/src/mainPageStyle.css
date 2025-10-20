@@ -1,100 +1,100 @@
 body{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-color);
-    box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 :root{
-    --primary-color: rgb(32, 32, 32);
-    --secondary-color: rgb(207, 67, 67);
-    --ternary-color: rgb(116, 116, 116);
+  --primary-color: rgb(32, 32, 32);
+  --secondary-color: rgb(207, 67, 67);
+  --ternary-color: rgb(116, 116, 116);
 
-    --font-size-large: 2rem;
-    --font-size-medium: 1.5rem;
-    --font-size-small: 1rem;
+  --font-size-large: 2rem;
+  --font-size-medium: 1.5rem;
+  --font-size-small: 1rem;
 
-    --font-weight-very-bold: 1000;
+  --font-weight-very-bold: 1000;
 }
 
 .navbar {
-    box-sizing: border-box;
-    width: 98%;
-    height: 4rem;
-    margin: 1%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  box-sizing: border-box;
+  width: 98%;
+  height: 4rem;
+  margin: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-link-main{
-    text-decoration: none;
-    color: var(--secondary-color);
-    padding: 0.5rem;
-    margin: 0.5rem;
-    font-size: var(--font-size-large);
-    font-weight: var(--font-weight-very-bold);
-    background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
-    linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
-    border: 5px solid transparent;
-    border-radius: 10px;
+  text-decoration: none;
+  color: var(--secondary-color);
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-very-bold);
+  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
+  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
+  border: 5px solid transparent;
+  border-radius: 10px;
 }
 
 .nav-links{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-    margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin: 0.5rem;
 }
 
 .nav-link{
-    text-decoration: none;
-    padding: 0.5rem;
-    color: var(--secondary-color);
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-weight-very-bold);
-    background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
-    linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
-    border: 5px solid transparent;
-    border-radius: 10px;
+  text-decoration: none;
+  padding: 0.5rem;
+  color: var(--secondary-color);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-very-bold);
+  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
+  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
+  border: 5px solid transparent;
+  border-radius: 10px;
 }
 
 .nav-buttons{
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .nav-button{
-    font-family: inherit;
-    text-decoration: none;
-    padding: 0.5rem;
-    color: var(--secondary-color);
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-weight-very-bold);
-    background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
-    linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    cursor: pointer
+  font-family: inherit;
+  text-decoration: none;
+  padding: 0.5rem;
+  color: var(--secondary-color);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-very-bold);
+  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
+  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
+  border: 5px solid transparent;
+  border-radius: 10px;
+  cursor: pointer
 }
 
 .nav-link-main,
 .nav-link,
 .nav-button,
 .match-list-header {
-    transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .nav-link-main:hover,
 .nav-link:hover,
 .nav-button:hover,
 .match-list-header:hover {
-    transform: scale(0.95);
-    box-shadow: 0 0 1rem var(--secondary-color);
+  transform: scale(0.95);
+  box-shadow: 0 0 1rem var(--secondary-color);
 }
 
 .hero {
@@ -146,68 +146,104 @@ body{
 
 /** Match Preview **/
 .match-list-wrapper {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .match-list-wrapper .match-list-header{
-    text-decoration: none;
-    padding: 0.5rem;
-    color: var(--secondary-color);
-    font-size: var(--font-size-large);
-    font-weight: var(--font-weight-very-bold);
-    background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
-    linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    cursor: pointer;
+  text-decoration: none;
+  padding: 0.5rem;
+  color: var(--secondary-color);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-very-bold);
+  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
+  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
+  border: 5px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .match-list {
-    background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
-    linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
-    border: 5px solid transparent;
-    width: 50rem;
-    border-radius: 20px;
-    padding: 30px 30px 20px;
+  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
+  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
+  border: 5px solid transparent;
+  width: 50rem;
+  border-radius: 20px;
+  padding: 30px 30px 20px;
 }
 
 .match-list .match-item{
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, var(--ternary-color), var(--secondary-color));
-    margin-bottom: 10px;
-    border-radius: 20px;
-    padding: 10px 10px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--ternary-color), var(--secondary-color));
+  margin-bottom: 10px;
+  border-radius: 20px;
+  padding: 10px 10px;
 }
 
 .match-item .match-details{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .match-item .match-details img{
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50px;
 }
 
 .match-item .match-details span{
-    font-size: 1.5rem;
+  font-size: var(--font-size-medium)
 }
 
 .match-item i{
-    font-size: 1.5rem;
+  font-size: var(--font-size-medium)
 }
 
-.match-item.dragging :where(.match-details, i){
-    opacity: 0;
+.footer-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-section .section-content {
+  width: 85%;
+  height: 10vh;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
+  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
+  border: 5px solid transparent;
+  border-radius: 20px;
+}
+
+.footer-section .copyright-text,
+.footer-section .policy-link {
+  padding: 10px 10px;
+  color: var(--secondary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: var(--font-size-small);
+}
+
+.footer-section .policy-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 1rem var(--secondary-color);
+}
+
+.footer-section .policy-text .separator {
+  margin: 0 20px;
+  color: var(--secondary-color);
 }

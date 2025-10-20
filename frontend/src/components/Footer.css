@@ -1,0 +1,39 @@
+.footer-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-section .section-content {
+  width: 85%;
+  height: 10vh;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
+  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
+  border: 5px solid transparent;
+  border-radius: 20px;
+}
+
+.footer-section .copyright-text,
+.footer-section .policy-link {
+  padding: 10px 10px;
+  color: var(--secondary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+  border-radius: 20px;
+  font-size: var(--font-size-small);
+}
+
+.footer-section .policy-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 1rem var(--secondary-color);
+}
+
+.footer-section .policy-text .separator {
+  margin: 0 20px;
+  color: var(--secondary-color);
+}
