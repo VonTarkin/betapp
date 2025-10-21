@@ -1,20 +1,20 @@
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar() {
   return (
     <div className="navbar-section">
       <nav className="navbar">
-        <a href="#" className="nav-link-main">BetApp</a>
+        <Link to="/" className="nav-link-main">BetApp</Link>
 
         <div className="nav-links">
-          <a href="#" className="nav-link">Home</a>
-          <a href="#" className="nav-link">About</a>
-          <a href="#" className="nav-link">FAQ</a>
+          <Link to="/about" className="nav-link">About</Link>
+          <Link to="/faq" className="nav-link">FAQ</Link>
         </div>
 
-        <div className="nav-buttons">
-          <button className="nav-button">Login</button>
-          <button className="nav-button">Register</button>
+        <div className="nav-links">
+          <Link to="/login" className="nav-link">Login</Link>
+          <Link to="/register" className="nav-link">Register</Link>
         </div>
       </nav>
     </div>

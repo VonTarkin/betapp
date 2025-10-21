@@ -1,4 +1,5 @@
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -6,9 +7,9 @@ export default function Footer() {
       <div className="section-content">
         <p className="copyright-text">© 2025 BetApp</p>
         <p className="policy-text">
-          <a href="#" className="policy-link">Privacy Policy</a>
+          <Link to="/privacypolicy" className="policy-link">Privacy Policy</Link>
           <span className="separator">●</span>
-          <a href="#" className="policy-link">Refund Policy</a>
+          <Link to="/refundpolicy" className="policy-link">Refund Policy</Link>
         </p>
       </div>
     </footer>

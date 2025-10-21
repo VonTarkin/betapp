@@ -41,34 +41,13 @@
   border-radius: 10px;
 }
 
-.nav-buttons {
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-button {
-  font-family: inherit;
-  text-decoration: none;
-  padding: 0.5rem;
-  color: var(--secondary-color);
-  font-size: var(--font-size-medium);
-  font-weight: var(--font-weight-very-bold);
-  background: linear-gradient(var(--primary-color), var(--primary-color)) padding-box,
-  linear-gradient(var(--ternary-color), var(--secondary-color)) border-box;
-  border: 5px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
 .nav-link-main,
-.nav-link,
-.nav-button {
+.nav-link {
   transition: all 0.2s ease;
 }
 
 .nav-link-main:hover,
-.nav-link:hover,
-.nav-button:hover {
+.nav-link:hover {
   transform: scale(0.95);
   box-shadow: 0 0 1rem var(--secondary-color);
 }
