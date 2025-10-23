@@ -7,3 +7,16 @@ http://localhost:8080/api/ping
 
 docker compose up -d
 docker ps    czy widać postgres:16 i port 5432?
+
+testaccount
+testaccount@gmail.com
+123456789
+Amongus1!
+Amongus1!
+
+
+testaccount1
+testaccount1@gmail.com
+1234567891
+Amongus1!1
+Amongus1!1

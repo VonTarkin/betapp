@@ -7,15 +7,31 @@ export default function Login() {
 
   const canSubmit = email.trim() !== "" && password.trim() !== "";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!canSubmit) return;
 
     const payload = { email, password };
-    console.log("LOGIN PAYLOAD:", payload);
 
+    try {
+      const response = await fetch("http://localhost:8080/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    //todo fetch later
+      if (response.ok) {
+        const message = await response.text();
+        alert(message || "Logged in successfully!");
+      } else if (response.status === 401) {
+        alert("Invalid email or password");
+      } else {
+        alert("Unexpected server error");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Server unreachable. Try again later.");
+    }
   };
 
   return (

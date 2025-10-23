@@ -1,16 +1,22 @@
 spring:
-  flyway:
-    enabled: false
   datasource:
-    url: "jdbc:postgresql://localhost:5433/betapp"
-    username: "betapp"
-    password: "betapp"
+    url: jdbc:postgresql://localhost:5433/betapp
+    username: betapp
+    password: betapp
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     properties:
       hibernate:
-        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    connectRetries: 3
+    baselineOnMigrate: false
+
 server:
   port: 8080
 
@@ -18,4 +24,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health,info"
+        include: health,info

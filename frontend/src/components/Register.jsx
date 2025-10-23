@@ -34,20 +34,44 @@ export default function Register() {
 
   const canSubmit = validUsername && validEmail && validCountry && validPhone && validPassword && passwordsMatch;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!canSubmit) return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!canSubmit) return;
 
-    // fetch backend here
-    const payload = {
-      username,
-      email,
-      phone: `${countryCode}${phone}`,
-      password,
-    };
-    console.log("REGISTER PAYLOAD:", payload);
-    // setUsername(""); setEmail(""); setCountryCode("+48"); setPhone(""); setPassword(""); setRepeatPassword("");
+  const payload = {
+    username,
+    email,
+    phone: `${countryCode}${phone}`,
+    password,
   };
+
+  try {
+    const response = await fetch("http://localhost:8080/api/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      alert("Account created successfully!");
+      setUsername("");
+      setEmail("");
+      setCountryCode("+48");
+      setPhone("");
+      setPassword("");
+      setRepeatPassword("");
+    } else {
+      const errorText = await response.text();
+      alert(`Registration failed: ${errorText || response.status}`);
+    }
+  } catch (err) {
+    console.error("Registration error:", err);
+    alert("Server error, please try again later.");
+  }
+};
+
 
   const invalidClass = (isValid, key) =>
     !isValid && touched[key] ? "input invalid" : "input";
