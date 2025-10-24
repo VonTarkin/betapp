@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import "./Register.css";
+import Notification from "./Notification";
 
 const USERNAME_REGEX = /^(?=(?:.*[A-Za-z]){3,})[A-Za-z0-9_]{3,24}$/; // min 3 letters, only letters/numbers/_
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -8,6 +9,12 @@ const PHONE_REGEX = /^\d{5,12}$/; // only digits
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/; // >=8 signs, at least 1 letter, 1 digit, 1 special sign.
 
 export default function Register() {
+  const [notif, setNotif] = useState({ message: "", type: "info", visible: false });
+
+  const showNotification = (message, type = "info") => {
+  setNotif({ message, type, visible: true });
+  };
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [countryCode, setCountryCode] = useState("+48");
@@ -55,7 +62,7 @@ const handleSubmit = async (e) => {
     });
 
     if (response.ok) {
-      alert("Account created successfully!");
+      showNotification("Account created successfully!", "success");
       setUsername("");
       setEmail("");
       setCountryCode("+48");
@@ -64,11 +71,11 @@ const handleSubmit = async (e) => {
       setRepeatPassword("");
     } else {
       const errorText = await response.text();
-      alert(`Registration failed: ${errorText || response.status}`);
+      showNotification(`Registration failed: ${errorText || response.status}`, "error");
     }
   } catch (err) {
     console.error("Registration error:", err);
-    alert("Server error, please try again later.");
+    showNotification("Server error, please try again later.", "error");
   }
 };
 
@@ -206,6 +213,14 @@ const handleSubmit = async (e) => {
           </div>
         </form>
       </div>
+        {notif.visible && (
+        <Notification
+        message={notif.message}
+        type={notif.type}
+        visible={notif.visible}
+        onClose={() => setNotif({ ...notif, visible: false })}
+        />
+        )}
     </section>
   );
 }

@@ -1,11 +1,18 @@
 import { useState } from "react";
 import "./Login.css";
+import Notification from "./Notification";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const canSubmit = email.trim() !== "" && password.trim() !== "";
+
+  const [notif, setNotif] = useState({ message: "", type: "info", visible: false });
+
+  const showNotification = (message, type = "info") => {
+  setNotif({ message, type, visible: true });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,15 +29,15 @@ export default function Login() {
 
       if (response.ok) {
         const message = await response.text();
-        alert(message || "Logged in successfully!");
+        showNotification(message || "Logged in successfully!", "success");
       } else if (response.status === 401) {
-        alert("Invalid email or password");
+        showNotification("Invalid email or password", "error");
       } else {
-        alert("Unexpected server error");
+        showNotification("Unexpected server error", "error");
       }
     } catch (err) {
       console.error("Login error:", err);
-      alert("Server unreachable. Try again later.");
+      showNotification("Server unreachable. Try again later.", "error");
     }
   };
 
@@ -70,7 +77,15 @@ export default function Login() {
             </button>
           </div>
         </form>
-      </div>
+      </div>      
+        {notif.visible && (
+        <Notification
+          message={notif.message}
+          type={notif.type}
+          visible={notif.visible}
+          onClose={() => setNotif({ ...notif, visible: false })}
+        />
+)}
     </section>
   );
 }
