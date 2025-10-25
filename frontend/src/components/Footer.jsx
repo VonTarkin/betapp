@@ -1,8 +1,9 @@
 import "./Footer.css";
 import { Link } from "react-router-dom";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="footer-section">
       <div className="section-content">

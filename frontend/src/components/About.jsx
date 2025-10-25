@@ -1,7 +1,8 @@
 import "./About.css";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
 
 export default function About() {
+  const { t } = useTranslation();
   return (
     <section className="about-section">
       <div className="about-content">

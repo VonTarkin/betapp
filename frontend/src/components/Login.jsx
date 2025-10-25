@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./Login.css";
 import Notification from "./Notification";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
 
 export default function Login() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

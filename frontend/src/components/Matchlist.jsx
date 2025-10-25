@@ -1,9 +1,11 @@
 import React from "react";
 import "./MatchList.css";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
+
 
 //Todo, we will be fetching that from B.E.
 export default function MatchList() {
+  const { t } = useTranslation();
   const matches = [
     { id: 1, teamA: "Country 1", teamB: "Country 2" },
     { id: 2, teamA: "Country 3", teamB: "Country 4" },

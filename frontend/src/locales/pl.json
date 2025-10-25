@@ -136,5 +136,55 @@
       "login": "Zaloguj",
       "register": "Zarejestruj się"
     }
+  },
+  "privacyPolicy": {
+    "header": "Polityka Prywatności",
+    "items": {
+      "1": {
+        "title": "1. Jakie informacje zbieramy",
+        "text": "BetApp gromadzi podstawowe dane osobowe, takie jak nazwa użytkownika, adres e-mail oraz dane dotyczące aktywności. Pomaga nam to ulepszać doświadczenie użytkownika i zapewniać bezpieczeństwo konta."
+      },
+      "2": {
+        "title": "2. Jak wykorzystujemy Twoje dane",
+        "text": "Twoje dane są wykorzystywane do personalizacji doświadczenia, zapewnienia bezpiecznego logowania oraz poprawy funkcjonalności platformy. Nie sprzedajemy ani nie udostępniamy Twoich danych osobowych osobom trzecim."
+      },
+      "3": {
+        "title": "3. Ochrona danych",
+        "text": "Wszystkie wrażliwe informacje są szyfrowane i bezpiecznie przechowywane. Nasz zespół stosuje ścisłe procedury ochrony danych, aby zapobiec nieautoryzowanemu dostępowi, modyfikacji lub ujawnieniu danych."
+      },
+      "4": {
+        "title": "4. Pliki cookies",
+        "text": "Używamy plików cookies do analizy ruchu, zapamiętywania preferencji i optymalizacji wydajności. Możesz w każdej chwili wyłączyć cookies w ustawieniach swojej przeglądarki."
+      },
+      "5": {
+        "title": "5. Kontakt",
+        "text": "Jeśli masz pytania dotyczące tej polityki prywatności, skontaktuj się z nami pod adresem privacy@betapp.com."
+      }
+    }
+  },
+  "refundPolicy": {
+    "header": "Polityka Zwrotów",
+    "items": {
+      "1": {
+        "title": "1. Ogólne zasady zwrotów",
+        "text": "BetApp oferuje zwroty tylko w określonych przypadkach związanych z błędami technicznymi lub przypadkowo dokonanymi podwójnymi płatnościami. Zwroty nie są dostępne dla zakończonych zakładów ani usług cyfrowych, które zostały już dostarczone."
+      },
+      "2": {
+        "title": "2. Wnioski o zwrot",
+        "text": "Aby złożyć wniosek o zwrot, skontaktuj się z naszym zespołem wsparcia pod adresem billing@betapp.com w ciągu 7 dni od transakcji. Podaj swoją nazwę użytkownika, identyfikator płatności oraz krótki opis sytuacji."
+      },
+      "3": {
+        "title": "3. Czas przetwarzania",
+        "text": "Wnioski o zwrot są rozpatrywane w ciągu 5–10 dni roboczych. Po zatwierdzeniu kwota zostanie zwrócona na pierwotną metodę płatności."
+      },
+      "4": {
+        "title": "4. Sytuacje bez prawa do zwrotu",
+        "text": "Zwroty nie będą przyznawane w przypadku celowego nadużycia, naruszenia Regulaminu BetApp lub niezadowolenia z wyników zakładów bądź prognoz."
+      },
+      "5": {
+        "title": "5. Kontakt",
+        "text": "W celu uzyskania dodatkowych informacji prosimy o kontakt z naszym działem finansowym pod adresem refunds@betapp.com."
+      }
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import "./Register.css";
 import Notification from "./Notification";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
 
 const USERNAME_REGEX = /^(?=(?:.*[A-Za-z]){3,})[A-Za-z0-9_]{3,24}$/; // min 3 letters, only letters/numbers/_
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -10,6 +10,7 @@ const PHONE_REGEX = /^\d{5,12}$/; // only digits
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/; // >=8 signs, at least 1 letter, 1 digit, 1 special sign.
 
 export default function Register() {
+  const { t } = useTranslation();
   const [notif, setNotif] = useState({ message: "", type: "info", visible: false });
 
   const showNotification = (message, type = "info") => {

@@ -137,6 +137,56 @@
       "login": "Login",
       "register": "Register"
     }
+  },
+  "privacyPolicy": {
+    "header": "Privacy Policy",
+    "items": {
+      "1": {
+        "title": "1. Information We Collect",
+        "text": "BetApp collects basic personal information such as your username, email address, and activity data. This helps us improve user experience and maintain account security."
+      },
+      "2": {
+        "title": "2. How We Use Your Data",
+        "text": "Your information is used to personalize your experience, provide secure authentication, and enhance platform functionality. We do not sell or rent your personal data to third parties."
+      },
+      "3": {
+        "title": "3. Data Protection",
+        "text": "All sensitive information is encrypted and securely stored. Our team follows strict data protection procedures to prevent unauthorized access, modification, or disclosure."
+      },
+      "4": {
+        "title": "4. Cookies",
+        "text": "We use cookies to analyze traffic, remember preferences, and optimize performance. You can disable cookies in your browser settings at any time."
+      },
+      "5": {
+        "title": "5. Contact",
+        "text": "If you have any questions about this policy, please reach out to us at privacy@betapp.com."
+      }
+    }
+  },
+  "refundPolicy": {
+    "header": "Refund Policy",
+    "items": {
+      "1": {
+        "title": "1. General Refund Conditions",
+        "text": "BetApp offers refunds only in specific cases related to technical errors or accidental duplicate payments. Refunds are not available for completed bets or digital services already delivered."
+      },
+      "2": {
+        "title": "2. Refund Requests",
+        "text": "To request a refund, contact our support team at billing@betapp.com within 7 days of the transaction. Include your username, payment ID, and a brief explanation."
+      },
+      "3": {
+        "title": "3. Processing Time",
+        "text": "Refund requests are reviewed within 5–10 business days. Once approved, the amount will be returned to your original payment method."
+      },
+      "4": {
+        "title": "4. Non-Refundable Situations",
+        "text": "Refunds will not be issued for intentional misuse, violation of BetApp Terms of Service, or dissatisfaction with bet outcomes or predictions."
+      },
+      "5": {
+        "title": "5. Contact",
+        "text": "For more details, please email our finance department at refunds@betapp.com."
+      }
+    }
   }
 
 }

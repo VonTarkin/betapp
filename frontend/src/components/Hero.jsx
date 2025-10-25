@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Hero.css";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
 
 export default function Hero() {
+  const { t } = useTranslation();
   const slides = t("hero.slides");
   const [currentSlide, setCurrentSlide] = useState(0);
 

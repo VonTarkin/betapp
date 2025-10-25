@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./CreateMatch.css";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
 
 export default function CreateMatch({ onMatchCreated }) {
+  const { t } = useTranslation();
   const [countries, setCountries] = useState([]);
   const [searchA, setSearchA] = useState("");
   const [searchB, setSearchB] = useState("");

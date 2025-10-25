@@ -1,7 +1,8 @@
 import "./FAQ.css";
-import { t } from "../i18n";
+import { useTranslation } from "../i18n/LanguageContext";
 
 export default function FAQ() {
+  const { t } = useTranslation();
   return (
     <section className="faq-section">
       <div className="faq-content">
