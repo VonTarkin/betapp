@@ -1,0 +1,140 @@
+{
+  "general": {
+    "unexpectedServerError": "Nieoczekiwany błąd serwera.",
+    "serverUnreachable": "Nie można się skomunikować z sewerem. Spróbuj ponownie później."
+  },
+  "login": {
+    "title": "Witaj z powrotem",
+    "email": "E-mail",
+    "password": "Hasło",
+    "login": "Zaloguj",
+    "loginSuccess": "Pomyślnie zalogowano!",
+    "invalidEmailOrPassword": "Podano niepoprawne hasło lub E-mail." ,
+    "emailPlaceholder": "ty@przyklad.com",
+    "passwordPlaceholder": "Twoje hasło"
+  },
+  "about": {
+    "title": "O BetApp",
+    "intro": "BetApp to nowoczesna aplikacja internetowa stworzona dla miłośników sportu, którzy cenią sobie przewidywanie wyników, rywalizację i strategię. Naszą misją jest połączenie emocji i analitycznego myślenia w jedno spójne doświadczenie.",
+    "goal": {
+      "title": "Nasz Cel",
+      "text": "Uczynić przewidywanie wyników sportowych wciągającym, uczciwym i opartym na społeczności. BetApp dostarcza zarówno początkującym, jak i zaawansowanym użytkownikom narzędzia do śledzenia, porównywania i doskonalenia skuteczności swoich typów."
+    },
+    "offer": {
+      "title": "Co Oferujemy",
+      "text": "Dane meczowe w czasie rzeczywistym, szczegółowe analizy oraz przejrzysty system obstawiania — wszystko w intuicyjnym interfejsie zbudowanym przy użyciu najnowszych technologii webowych."
+    },
+    "community": {
+      "title": "Dołącz do Społeczności",
+      "text": "Rywalizuj ze znajomymi, wspinaj się w rankingach i udowodnij swoją wiedzę sportową. Niezależnie od tego, czy jesteś graczem rekreacyjnym, czy miłośnikiem statystyk — BetApp ma miejsce dla Ciebie."
+    }
+  },
+  "faq": {
+    "title": "Najczęściej Zadawane Pytania",
+    "question1": {
+      "title": "Czym jest BetApp?",
+      "text": "BetApp to nowoczesna platforma typerska, która pozwala użytkownikom przewidywać wyniki meczów, zarządzać swoimi zakładami i rywalizować ze znajomymi w bezpiecznym i angażującym środowisku."
+    },
+    "question2": {
+      "title": "Czy BetApp jest darmowy?",
+      "text": "Oczywiście! Możesz się zarejestrować, przeglądać mecze i brać udział w publicznych grach całkowicie za darmo. W przyszłości niektóre zaawansowane analizy lub turnieje mogą wymagać konta premium."
+    },
+    "question3": {
+      "title": "Jak mogę zresetować hasło?",
+      "text": "Wystarczy, że przejdziesz na stronę logowania i klikniesz „Zapomniałem hasła?”. Otrzymasz wiadomość e-mail z instrukcjami dotyczącymi bezpiecznego resetowania."
+    },
+    "question4": {
+      "title": "Czy mogę skontaktować się z pomocą techniczną?",
+      "text": "Tak! Nasz zespół wsparcia jest dostępny 24/7. Wystarczy odwiedzić sekcję „Kontakt” lub napisać do nas na adres support@betapp.com."
+    }
+  },
+  "footer": {
+  "copyright": "© 2025 BetApp",
+  "privacyPolicy": "Polityka Prywatności",
+  "refundPolicy": "Polityka Zwrotów"
+ },
+  "incomingMatches": {
+    "title": "Nadchodzące mecze"
+  },
+  "hero": {
+  "slides": [
+    {
+      "title": "Postaw na swoją pasję",
+      "text": "Dołącz do gry i poczuj dreszcz zwycięstwa"
+    },
+    {
+      "title": "Graj z głową",
+      "text": "Analizuj, przewiduj i wygrywaj z BetApp"
+    },
+    {
+      "title": "Bądź o krok przed innymi",
+      "text": "Śledź wyniki na żywo i podejmuj właściwe decyzje"
+    }
+  ]
+  },
+  "createMatch": {
+    "title": "Utwórz Nowy Mecz",
+    "dateLabel": "Data meczu:",
+    "countryA": {
+      "label": "Kraj A:",
+      "placeholder": "Szukaj kraju..."
+    },
+    "countryB": {
+      "label": "Kraj B:",
+      "placeholder": "Szukaj kraju..."
+    },
+    "addButton": "Dodaj mecz",
+    "errors": {
+      "allFieldsRequired": "Wszystkie pola są wymagane.",
+      "teamsMustBeDifferent": "Drużyny muszą być różne!",
+      "errorFetchingCountries": "Błąd podczas pobierania listy krajów."
+    }
+  },
+  "register": {
+    "title": "Utwórz konto",
+    "fields": {
+      "username": {
+        "label": "Nazwa konta",
+        "placeholder": "Nazwa użytkownika",
+        "hint": "Min. 3 litery. Dozwolone cyfry, litery i znak _."
+      },
+      "email": {
+        "label": "E-mail",
+        "placeholder": "ty@przyklad.com",
+        "hint": "Podaj poprawny adres e-mail."
+      },
+      "phone": {
+        "label": "Numer telefonu",
+        "countryPlaceholder": "+48",
+        "phonePlaceholder": "123456789",
+        "hintCountry": "Użyj formatu np. +48 / +1 / +420.",
+        "hintPhone": "Tylko cyfry (5–12)."
+      },
+      "password": {
+        "label": "Hasło",
+        "placeholder": "Min. 8 znaków, przynajmniej 1 litera, 1 cyfra i 1 znak specjalny.",
+        "hint": "Min. 8 znaków, przynajmniej 1 litera, 1 cyfra i 1 znak specjalny."
+      },
+      "repeatPassword": {
+        "label": "Powtórz hasło",
+        "placeholder": "Powtórz hasło",
+        "hint": "Hasła nie są identyczne."
+      }
+    },
+    "button": "Utwórz konto",
+    "notifications": {
+      "success": "Konto zostało pomyślnie utworzone!",
+      "failed": "Rejestracja nie powiodła się: {0}",
+      "serverUnreachable": "Nie można połączyć się z serwerem."
+    }
+  },
+  "navbar": {
+    "brand": "BetApp",
+    "links": {
+      "about": "O aplikacji",
+      "faq": "FAQ",
+      "login": "Zaloguj",
+      "register": "Zarejestruj się"
+    }
+  }
+}

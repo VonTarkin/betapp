@@ -1,6 +1,6 @@
 import React from "react";
 import "./MatchList.css";
-
+import { t } from "../i18n";
 
 //Todo, we will be fetching that from B.E.
 export default function MatchList() {
@@ -13,7 +13,7 @@ export default function MatchList() {
 
   return (
     <div className="match-list-wrapper">
-      <h2 className="match-list-header">Incoming Matches</h2>
+      <h2 className="match-list-header">{t("incomingMatches.title")}</h2>
       <ul className="match-list">
         {matches.map((match) => (
           <li key={match.id} className="match-item">

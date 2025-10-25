@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import "./Register.css";
 import Notification from "./Notification";
+import { t } from "../i18n";
 
 const USERNAME_REGEX = /^(?=(?:.*[A-Za-z]){3,})[A-Za-z0-9_]{3,24}$/; // min 3 letters, only letters/numbers/_
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -62,7 +63,7 @@ const handleSubmit = async (e) => {
     });
 
     if (response.ok) {
-      showNotification("Account created successfully!", "success");
+      showNotification(t("register.notifications.success"), "success");
       setUsername("");
       setEmail("");
       setCountryCode("+48");
@@ -71,11 +72,13 @@ const handleSubmit = async (e) => {
       setRepeatPassword("");
     } else {
       const errorText = await response.text();
-      showNotification(`Registration failed: ${errorText || response.status}`, "error");
+      showNotification(
+      t("register.notifications.failed").replace("{0}", errorText || response.status),
+      "error");
     }
   } catch (err) {
     console.error("Registration error:", err);
-    showNotification("Server error, please try again later.", "error");
+    showNotification(t("general.serverUnreachable"), "error");
   }
 };
 
@@ -86,16 +89,16 @@ const handleSubmit = async (e) => {
   return (
     <section className="register-section">
       <div className="register-card">
-        <h2 className="register-header">Create your account</h2>
+        <h2 className="register-header">{t("register.button")}</h2>
 
         <form className="register-form" onSubmit={handleSubmit} noValidate>
           <div className="form-row">
-            <label htmlFor="username">Account Name</label>
+            <label htmlFor="username">{t("register.fields.username.label")}</label>
             <input
               id="username"
               type="text"
               className={invalidClass(validUsername, "username")}
-              placeholder="Username"
+              placeholder={t("register.fields.username.placeholder")}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               onBlur={() => setTouched((t) => ({ ...t, username: true }))}
@@ -104,18 +107,18 @@ const handleSubmit = async (e) => {
             />
             {!validUsername && touched.username && (
               <div className="hint">
-                Min. 3 Letters. Only Numbers, Characters and _ allowed.
+                {t("register.fields.username.hint")}
               </div>
             )}
           </div>
 
           <div className="form-row">
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="email">{t("register.fields.email.label")}</label>
             <input
               id="email"
               type="email"
               className={invalidClass(validEmail, "email")}
-              placeholder="you@example.com"
+              placeholder={t("register.fields.email.placeholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onBlur={() => setTouched((t) => ({ ...t, email: true }))}
@@ -123,18 +126,18 @@ const handleSubmit = async (e) => {
               autoComplete="email"
             />
             {!validEmail && touched.email && (
-              <div className="hint">Please enter a valid e-mail address.</div>
+              <div className="hint">{t("register.fields.email.hint")}</div>
             )}
           </div>
           <div className="form-row">
-            <label htmlFor="phone">Phone Number</label>
+            <label htmlFor="phone">{t("register.fields.phone.label")}</label>
             <div className="two-cols">
               <div className="col small">
                 <input
                   id="country"
                   type="text"
                   className={invalidClass(validCountry, "country")}
-                  placeholder="+48"
+                  placeholder={t("register.fields.phone.countryPlaceholder")}
                   value={countryCode}
                   onChange={(e) => setCountryCode(e.target.value)}
                   onBlur={() => setTouched((t) => ({ ...t, country: true }))}
@@ -147,7 +150,7 @@ const handleSubmit = async (e) => {
                   id="phone"
                   type="tel"
                   className={invalidClass(validPhone, "phone")}
-                  placeholder="123456789"
+                  placeholder={t("register.fields.phone.phonePlaceholder")}
                   value={phone}
                   onChange={(e) => {
                     const onlyDigits = e.target.value.replace(/\D/g, "");
@@ -161,20 +164,20 @@ const handleSubmit = async (e) => {
             </div>
 
             {(!validCountry && touched.country) && (
-              <div className="hint">Use format like +48 / +1 / +420.</div>
+              <div className="hint">{t("register.fields.phone.hintCountry")}</div>
             )}
 
             {(!validPhone && touched.phone) && (
-              <div className="hint">Digits only (5–12).</div>
+              <div className="hint">{t("register.fields.phone.hintPhone")}</div>
             )}
           </div>
           <div className="form-row">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("register.fields.password.label")}</label>
             <input
               id="password"
               type="password"
               className={invalidClass(validPassword, "password")}
-              placeholder="Min. 8 signs, at least 1 letter, 1 digit and 1 special signs."
+              placeholder={t("register.fields.password.placeholder")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onBlur={() => setTouched((t) => ({ ...t, password: true }))}
@@ -183,18 +186,18 @@ const handleSubmit = async (e) => {
             />
             {!validPassword && touched.password && (
               <div className="hint">
-                Min. 8 signs, at least 1 letter, 1 digit and 1 special signs.
+                {t("register.fields.password.hint")}
               </div>
             )}
           </div>
 
           <div className="form-row">
-            <label htmlFor="repeatPassword">Repeat Password</label>
+            <label htmlFor="repeatPassword">{t("register.fields.repeatPassword.label")}</label>
             <input
               id="repeatPassword"
               type="password"
               className={invalidClass(passwordsMatch, "repeat")}
-              placeholder="Repeat Password"
+              placeholder={t("register.fields.repeatPassword.placeholder")}
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
               onBlur={() => setTouched((t) => ({ ...t, repeat: true }))}
@@ -202,13 +205,13 @@ const handleSubmit = async (e) => {
               autoComplete="new-password"
             />
             {repeatPassword.length > 0 && !passwordsMatch && touched.repeat && (
-              <div className="hint">Passwords don’t match.</div>
+              <div className="hint">{t("register.fields.repeatPassword.hint")}</div>
             )}
           </div>
 
           <div className="form-actions">
             <button type="submit" className="submit-btn" disabled={!canSubmit}>
-              Create account
+              {t("register.button")}
             </button>
           </div>
         </form>

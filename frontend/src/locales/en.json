@@ -1,0 +1,142 @@
+{
+  "general": {
+    "unexpectedServerError": "Unexpected server error.",
+    "serverUnreachable": "Unable to communicate with the server. Please try again later."
+  },
+  "login": {
+    "title": "Welcome back",
+    "email": "Email",
+    "password": "Password",
+    "login": "Log in",
+    "loginSuccess": "Successfully logged in!",
+    "invalidEmailOrPassword": "Invalid email or password.",
+    "emailPlaceholder": "you@example.com",
+    "passwordPlaceholder": "Your password"
+    
+  },
+  "about": {
+    "title": "About BetApp",
+    "intro": "BetApp is a modern web application designed for sports enthusiasts who love prediction, competition, and strategy. Our mission is to bring excitement and analytical thinking together in one seamless experience.",
+    "goal": {
+      "title": "Our Goal",
+      "text": "To make sports predictions engaging, fair, and community-driven. BetApp provides both casual users and advanced players with the tools to track, compare, and improve their prediction accuracy."
+    },
+    "offer": {
+      "title": "What We Offer",
+      "text": "Real-time match data, detailed analytics, and a transparent betting system — all wrapped in an intuitive interface built with cutting-edge web technologies."
+    },
+    "community": {
+      "title": "Join the Community",
+      "text": "Compete with your friends, climb the leaderboard, and prove your sports knowledge. Whether you’re a casual player or a statistic lover, BetApp has a place for you."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "question1": {
+      "title": "What is BetApp?",
+      "text": "BetApp is a modern betting platform that allows users to predict match outcomes, manage their wagers, and compete with friends in a safe and engaging environment."
+    },
+    "question2": {
+      "title": "Is BetApp free to use?",
+      "text": "Absolutely. You can register, browse matches, and participate in public games for free. Some advanced analytics or tournaments may require an upgraded account in the future."
+    },
+    "question3": {
+      "title": "How can I reset my password?",
+      "text": "Simply go to the login page and click on “Forgot Password?”. You’ll receive an email with instructions to securely reset it."
+    },
+    "question4": {
+      "title": "Can I contact support?",
+      "text": "Yes! Our support team is available 24/7. Just visit the Contact section or email us at support@betapp.com."
+    }
+  },
+  "footer": {
+  "copyright": "© 2025 BetApp",
+  "privacyPolicy": "Privacy Policy",
+  "refundPolicy": "Refund Policy"
+ },
+  "incomingMatches": {
+    "title": "Incoming Matches"
+  },
+  "hero": {
+  "slides": [
+    {
+      "title": "Bet on your passion",
+      "text": "Join the game and feel the thrill of victory"
+    },
+    {
+      "title": "Play smart",
+      "text": "Analyze, predict, and win big with BetApp"
+    },
+    {
+      "title": "Stay ahead",
+      "text": "Follow live results and make the right move"
+    }
+  ]
+ },
+  "createMatch": {
+    "title": "Create New Match",
+    "dateLabel": "Match date:",
+    "countryA": {
+      "label": "Country A:",
+      "placeholder": "Search country..."
+    },
+    "countryB": {
+      "label": "Country B:",
+      "placeholder": "Search country..."
+    },
+    "addButton": "Add Match",
+    "errors": {
+      "allFieldsRequired": "All fields are required.",
+      "teamsMustBeDifferent": "Teams must be different!",
+      "errorFetchingCountries": "Error fetching countries."
+    }
+  },
+  "register": {
+    "title": "Create your account",
+    "fields": {
+      "username": {
+        "label": "Account Name",
+        "placeholder": "Username",
+        "hint": "Min. 3 letters. Only numbers, characters and _ allowed."
+      },
+      "email": {
+        "label": "E-mail",
+        "placeholder": "you@example.com",
+        "hint": "Please enter a valid e-mail address."
+      },
+      "phone": {
+        "label": "Phone Number",
+        "countryPlaceholder": "+48",
+        "phonePlaceholder": "123456789",
+        "hintCountry": "Use format like +48 / +1 / +420.",
+        "hintPhone": "Digits only (5–12)."
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Min. 8 signs, at least 1 letter, 1 digit and 1 special sign.",
+        "hint": "Min. 8 signs, at least 1 letter, 1 digit and 1 special sign."
+      },
+      "repeatPassword": {
+        "label": "Repeat Password",
+        "placeholder": "Repeat Password",
+        "hint": "Passwords don’t match."
+      }
+    },
+    "button": "Create account",
+    "notifications": {
+      "success": "Account created successfully!",
+      "failed": "Registration failed: {0}",
+      "serverUnreachable": "Unable to communicate with the server."
+    }
+  },
+  "navbar": {
+    "brand": "BetApp",
+    "links": {
+      "about": "About",
+      "faq": "FAQ",
+      "login": "Login",
+      "register": "Register"
+    }
+  }
+
+}

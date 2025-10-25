@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CreateMatch.css";
+import { t } from "../i18n";
 
 export default function CreateMatch({ onMatchCreated }) {
   const [countries, setCountries] = useState([]);
@@ -22,17 +23,17 @@ export default function CreateMatch({ onMatchCreated }) {
           .sort((a, b) => a.localeCompare(b));
         setCountries(list);
       })
-      .catch((err) => console.error("Error fetching countries:", err));
+      .catch((err) => console.error(t("createMatch.errors.errorFetchingCountries"), err));
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!teamA || !teamB || !date) {
-      setError("All fields are required.");
+      setError(t("createMatch.errors.allFieldsRequired"));
       return;
     }
     if (teamA === teamB) {
-      setError("Teams must be different!");
+      setError(t("createMatch.errors.teamsMustBeDifferent"));
       return;
     }
     setError("");
@@ -54,10 +55,10 @@ export default function CreateMatch({ onMatchCreated }) {
 
   return (
     <div className="create-match-wrapper">
-      <h2 className="create-match-header">Create New Match</h2>
+      <h2 className="create-match-header">{t("createMatch.title")}</h2>
       <form className="create-match-form" onSubmit={handleSubmit}>
         <label className="datetime-label">
-          Match date:
+          {t("createMatch.dateLabel")}
           <div className="datetime-wrapper">
             <input
               type="datetime-local"
@@ -73,10 +74,10 @@ export default function CreateMatch({ onMatchCreated }) {
           </div>
         </label>
         <label>
-          Country A:
+          {t("createMatch.countryA.label")}
           <input
             type="text"
-            placeholder="Search country..."
+            placeholder={t("createMatch.countryA.placeholder")}
             value={searchA}
             onChange={(e) => {
               setSearchA(e.target.value);
@@ -104,10 +105,10 @@ export default function CreateMatch({ onMatchCreated }) {
         </label>
 
         <label>
-          Country B:
+          {t("createMatch.countryB.label")}
           <input
             type="text"
-            placeholder="Search country..."
+            placeholder={t("createMatch.countryB.placeholder")}
             value={searchB}
             onChange={(e) => {
               setSearchB(e.target.value);
@@ -140,7 +141,7 @@ export default function CreateMatch({ onMatchCreated }) {
         {error && <div className="error-text">{error}</div>}
 
         <button type="submit" className="create-match-btn">
-          Add Match
+          {t("createMatch.addButton")}
         </button>
       </form>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
 import Notification from "./Notification";
+import { t } from "../i18n";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -29,30 +30,30 @@ export default function Login() {
 
       if (response.ok) {
         const message = await response.text();
-        showNotification(message || "Logged in successfully!", "success");
+        showNotification(message || t("login.loginSuccess"), "success");
       } else if (response.status === 401) {
-        showNotification("Invalid email or password", "error");
+        showNotification(t("login.invalidEmailOrPassword"), "error");
       } else {
-        showNotification("Unexpected server error", "error");
+        showNotification(t("general.unexpectedServerError"), "error");
       }
     } catch (err) {
       console.error("Login error:", err);
-      showNotification("Server unreachable. Try again later.", "error");
+      showNotification(t("general.serverUnreachable"), "error");
     }
   };
 
   return (
     <section className="login-section">
       <div className="login-card">
-        <h2 className="login-header">Welcome back</h2>
+        <h2 className="login-header">{t("login.title")}</h2>
 
         <form className="login-form" onSubmit={handleSubmit} noValidate>
           <div className="form-row">
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="email">{t("login.email")}</label>
             <input
               id="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder={t("login.emailPlaceholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
@@ -60,11 +61,11 @@ export default function Login() {
           </div>
 
           <div className="form-row">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">{t("login.password")}</label>
             <input
               id="password"
               type="password"
-              placeholder="Your password"
+              placeholder={t("login.passwordPlaceholder")}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
@@ -73,7 +74,7 @@ export default function Login() {
 
           <div className="form-actions">
             <button type="submit" className="submit-btn" disabled={!canSubmit}>
-              Log in
+              {t("login.login")}
             </button>
           </div>
         </form>
