@@ -20,7 +20,7 @@ public class UserController {
   }
 
   @PostMapping("/register")
-  public ResponseEntity<UserEntity> registerUser(@RequestBody RegisterRequest request) {
+  public ResponseEntity<String> registerUser(@RequestBody RegisterRequest request) {
     return userService.registerUser(request);
   }
 
@@ -35,12 +35,12 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<UserEntity> getUserById(@PathVariable Long id) {
+  public ResponseEntity<String> getUserById(@PathVariable Long id) {
     return userService.getUserById(id);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+  public ResponseEntity<String> deleteUser(@PathVariable Long id) {
     return userService.deleteUser(id);
   }
 }
