@@ -4,7 +4,7 @@ import Notification from "./Notification";
 import { useTranslation } from "../i18n/LanguageContext";
 
 export default function Login() {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,7 +25,9 @@ export default function Login() {
     try {
       const response = await fetch("http://localhost:8080/api/users/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+          "Accept-Language": lang
+         },
         body: JSON.stringify(payload),
       });
 
@@ -33,7 +35,8 @@ export default function Login() {
         const message = await response.text();
         showNotification(message || t("login.loginSuccess"), "success");
       } else if (response.status === 401) {
-        showNotification(t("login.invalidEmailOrPassword"), "error");
+        const message = await response.text();
+        showNotification(message, "error");
       } else {
         showNotification(t("general.unexpectedServerError"), "error");
       }

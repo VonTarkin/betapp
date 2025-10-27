@@ -7,6 +7,7 @@ com\example\betapp\entity\UserEntity.class
 com\example\betapp\service\UserService.class
 com\example\betapp\TestController.class
 com\example\betapp\entity\RoleEntity$RoleEntityBuilder.class
+com\example\betapp\config\AppConfig.class
 com\example\betapp\entity\RoleEntity.class
 com\example\betapp\repository\UserRepository.class
 com\example\betapp\entity\UserEntity$UserEntityBuilder.class

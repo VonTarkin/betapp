@@ -1,7 +1,8 @@
 {
   "general": {
     "unexpectedServerError": "Nieoczekiwany błąd serwera.",
-    "serverUnreachable": "Nie można się skomunikować z sewerem. Spróbuj ponownie później."
+    "serverUnreachable": "Nie można się skomunikować z sewerem. Spróbuj ponownie później.",
+    "error": "Błąd"
   },
   "login": {
     "title": "Witaj z powrotem",

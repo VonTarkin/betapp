@@ -1,7 +1,8 @@
 {
   "general": {
     "unexpectedServerError": "Unexpected server error.",
-    "serverUnreachable": "Unable to communicate with the server. Please try again later."
+    "serverUnreachable": "Unable to communicate with the server. Please try again later.",
+    "error": "error"
   },
   "login": {
     "title": "Welcome back",
@@ -188,5 +189,4 @@
       }
     }
   }
-
 }

@@ -10,7 +10,7 @@ const PHONE_REGEX = /^\d{5,12}$/; // only digits
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/; // >=8 signs, at least 1 letter, 1 digit, 1 special sign.
 
 export default function Register() {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   const [notif, setNotif] = useState({ message: "", type: "info", visible: false });
 
   const showNotification = (message, type = "info") => {
@@ -59,6 +59,7 @@ const handleSubmit = async (e) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Accept-Language": lang
       },
       body: JSON.stringify(payload),
     });
