@@ -1,11 +1,13 @@
 package com.example.betapp.service;
 
+import com.example.betapp.dto.LoginResponse;
 import com.example.betapp.dto.RegisterRequest;
 import com.example.betapp.entity.RoleEntity;
 import com.example.betapp.entity.UserEntity;
 import com.example.betapp.enums.RolesEnum;
 import com.example.betapp.repository.RoleRepository;
 import com.example.betapp.repository.UserRepository;
+import com.example.betapp.security.JwtService;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +26,16 @@ public class UserService {
   private final RoleRepository roleRepository;
   private final BCryptPasswordEncoder passwordEncoder;
   private final MessageSource messageSource;
+  private final JwtService jwtService;
 
-  public UserService(UserRepository userRepository, RoleRepository roleRepository, MessageSource messageSource) {
+
+  public UserService(UserRepository userRepository, RoleRepository roleRepository, MessageSource messageSource,
+                     JwtService jwtService) {
     this.userRepository = userRepository;
     this.roleRepository = roleRepository;
     this.messageSource = messageSource;
     this.passwordEncoder = new BCryptPasswordEncoder();
+    this.jwtService = jwtService;
   }
 
   @Transactional
@@ -72,28 +78,47 @@ public class UserService {
   }
 
   @Transactional(readOnly = true)
-  public ResponseEntity<String> loginUser(String email, String password) {
+  public ResponseEntity<LoginResponse> loginUser(String email, String password) {
     Locale locale = LocaleContextHolder.getLocale();
-
     Optional<UserEntity> userOpt = userRepository.findByEmail(email);
 
     if (userOpt.isEmpty()) {
-      return ResponseEntity.status(401).body(
-              messageSource.getMessage("ERROR_INVALID_CREDENTIALS", null, locale)
+      String msg = messageSource.getMessage("ERROR_INVALID_CREDENTIALS", null, locale);
+
+      LoginResponse errorResponse = new LoginResponse(
+              null,null, null, null, msg
       );
+
+      return ResponseEntity.status(401).body(errorResponse);
     }
 
     UserEntity user = userOpt.get();
+
     if (!passwordEncoder.matches(password, user.getPassword())) {
-      return ResponseEntity.status(401).body(
-              messageSource.getMessage("ERROR_INVALID_CREDENTIALS", null, locale)
+      String msg = messageSource.getMessage("ERROR_INVALID_CREDENTIALS", null, locale);
+
+      LoginResponse errorResponse = new LoginResponse(
+              null, null, null, null, msg
       );
+
+      return ResponseEntity.status(401).body(errorResponse);
     }
 
-    return ResponseEntity.ok(
-            messageSource.getMessage("SUCCESS_USER_LOGGED_IN", null, locale)
+    //Ok, so token goes here I think.
+    String token = jwtService.generateToken(user);
+    String successMsg = messageSource.getMessage("SUCCESS_USER_LOGGED_IN", null, locale);
+
+    LoginResponse successResponse = new LoginResponse(
+            token,
+            user.getUsername(),
+            user.getEmail(),
+            user.getRole().getName().name(),
+            successMsg
     );
+
+    return ResponseEntity.ok(successResponse);
   }
+
 
   public ResponseEntity<List<UserEntity>> getAllUsers() {
     return ResponseEntity.ok(userRepository.findAll());

@@ -1,5 +1,7 @@
 com\example\betapp\repository\RoleRepository.class
+com\example\betapp\security\JwtService.class
 com\example\betapp\enums\RolesEnum.class
+com\example\betapp\dto\LoginResponse.class
 com\example\betapp\config\SecurityConfig.class
 com\example\betapp\controller\UserController.class
 com\example\betapp\dto\LoginRequest.class

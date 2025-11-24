@@ -136,7 +136,8 @@
       "about": "About",
       "faq": "FAQ",
       "login": "Login",
-      "register": "Register"
+      "register": "Register",
+      "logout": "Log out"
     }
   },
   "privacyPolicy": {

@@ -2,11 +2,15 @@ import { useState } from "react";
 import "./Login.css";
 import Notification from "./Notification";
 import { useTranslation } from "../i18n/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+
+export default function Login({ onLoginSuccess }) {
   const { t, lang } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
 
   const canSubmit = email.trim() !== "" && password.trim() !== "";
 
@@ -16,35 +20,52 @@ export default function Login() {
   setNotif({ message, type, visible: true });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!canSubmit) return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!canSubmit) return;
 
-    const payload = { email, password };
+  const payload = { email, password };
 
-    try {
-      const response = await fetch("http://localhost:8080/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json",
-          "Accept-Language": lang
-         },
-        body: JSON.stringify(payload),
-      });
+  try {
+    const response = await fetch("http://localhost:8080/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept-Language": lang,
+      },
+      body: JSON.stringify(payload),
+    });
 
-      if (response.ok) {
-        const message = await response.text();
-        showNotification(message || t("login.loginSuccess"), "success");
-      } else if (response.status === 401) {
-        const message = await response.text();
-        showNotification(message, "error");
-      } else {
-        showNotification(t("general.unexpectedServerError"), "error");
+    const data = await response.json();
+    console.log("TOKEN:", data.token);
+
+    if (response.ok) {
+      // I'm supposed to save the token I guess.
+      if (data.token) {
+        localStorage.setItem("authToken", data.token);
       }
-    } catch (err) {
-      console.error("Login error:", err);
-      showNotification(t("general.serverUnreachable"), "error");
+
+      if (onLoginSuccess) {
+        onLoginSuccess();
+      }
+
+
+      showNotification(
+        data.message || t("login.loginSuccess"),
+        "success"
+      );
+      navigate("/");
+    } else if (response.status === 401) {
+      showNotification(data.message, "error");
+    } else {
+      showNotification(t("general.unexpectedServerError"), "error");
     }
-  };
+  } catch (err) {
+    console.error("Login error:", err);
+    showNotification(t("general.serverUnreachable"), "error");
+  }
+};
+
 
   return (
     <section className="login-section">

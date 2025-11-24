@@ -3,11 +3,13 @@ C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\c
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\config\SecurityConfig.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\controller\UserController.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\LoginRequest.java
+C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\LoginResponse.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\RegisterRequest.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\entity\RoleEntity.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\entity\UserEntity.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\enums\RolesEnum.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\repository\RoleRepository.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\repository\UserRepository.java
+C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\security\JwtService.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\service\UserService.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\TestController.java

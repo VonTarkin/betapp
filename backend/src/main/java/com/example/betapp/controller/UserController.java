@@ -1,6 +1,7 @@
 package com.example.betapp.controller;
 
 import com.example.betapp.dto.LoginRequest;
+import com.example.betapp.dto.LoginResponse;
 import com.example.betapp.dto.RegisterRequest;
 import com.example.betapp.entity.UserEntity;
 import com.example.betapp.service.UserService;
@@ -25,7 +26,7 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  public ResponseEntity<String> loginUser(@RequestBody LoginRequest request) {
+  public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest request) {
     return userService.loginUser(request.getEmail(), request.getPassword());
   }
 
