@@ -77,12 +77,6 @@ public class UserService {
 
     Optional<UserEntity> userOpt = userRepository.findByEmail(email);
 
-    if (true) {
-      String message = messageSource.getMessage("ERROR_INVALID_CREDENTIALS", null, locale);
-      return ResponseEntity.status(401).body(message);
-    }
-
-
     if (userOpt.isEmpty()) {
       return ResponseEntity.status(401).body(
               messageSource.getMessage("ERROR_INVALID_CREDENTIALS", null, locale)
