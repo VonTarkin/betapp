@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
         data.message || t("login.loginSuccess"),
         "success"
       );
-      navigate("/");
+      navigate("/account");
     } else if (response.status === 401) {
       showNotification(data.message, "error");
     } else {

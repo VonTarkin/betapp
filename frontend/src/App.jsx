@@ -8,10 +8,10 @@ import RegisterPage from "./pages/RegisterPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
 import Navbar from "./components/Navbar";
+import AccountPage from "./pages/AccountPage"; // ← NOWE
 import { useNavigate } from "react-router-dom";
 
 export default function App() {
-
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -24,9 +24,9 @@ export default function App() {
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
-  };  
+  };
 
-    const handleLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("authToken");
     setIsAuthenticated(false);
     navigate("/");
@@ -34,19 +34,24 @@ export default function App() {
 
   return (
     <>
-    <Navbar
-      isAuthenticated={isAuthenticated}
-      onLogout={handleLogout}
-    ></Navbar>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/faq" element={<FAQPage />} />
-      <Route path="/login" element={<LoginPage onLoginSuccess={handleLoginSuccess} />}/>
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/privacypolicy" element={<PrivacyPolicyPage />} />
-      <Route path="/refundpolicy" element={<RefundPolicyPage />} />
-    </Routes>
+      <Navbar
+        isAuthenticated={isAuthenticated}
+        onLogout={handleLogout}
+      />
+
+      <Routes>
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route
+          path="/login"
+          element={<LoginPage onLoginSuccess={handleLoginSuccess} />}
+        />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicyPage />} />
+        <Route path="/refundpolicy" element={<RefundPolicyPage />} />
+      </Routes>
     </>
   );
 }

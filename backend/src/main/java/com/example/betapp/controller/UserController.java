@@ -3,6 +3,7 @@ package com.example.betapp.controller;
 import com.example.betapp.dto.LoginRequest;
 import com.example.betapp.dto.LoginResponse;
 import com.example.betapp.dto.RegisterRequest;
+import com.example.betapp.dto.UserResponse;
 import com.example.betapp.entity.UserEntity;
 import com.example.betapp.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -44,4 +45,10 @@ public class UserController {
   public ResponseEntity<String> deleteUser(@PathVariable Long id) {
     return userService.deleteUser(id);
   }
+
+  @GetMapping("/me")
+  public ResponseEntity<?> getCurrentUser() {
+    return userService.getCurrentUser();
+  }
+
 }

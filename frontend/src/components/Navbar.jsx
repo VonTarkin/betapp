@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { t } from "../i18n/i18n";
 import { useLanguage } from "../i18n/LanguageContext";
-import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ isAuthenticated, onLogout }) {
   const { lang, changeLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-
 
   const handleLangChange = (newLang) => {
     changeLanguage(newLang);
@@ -50,12 +47,18 @@ export default function Navbar({ isAuthenticated, onLogout }) {
 
         <div className="nav-links">
           {isAuthenticated ? (
+            <>
             <span
               className="nav-link"
               onClick={onLogout}
             >
               {t("navbar.links.logout")}
             </span>
+            <Link to="/account" className="nav-link">
+                {t("navbar.links.account")}
+            </Link>
+            </>
+            
           ) : (
             <>
               <Link to="/login" className="nav-link">

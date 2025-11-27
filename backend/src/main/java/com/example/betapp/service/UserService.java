@@ -2,6 +2,7 @@ package com.example.betapp.service;
 
 import com.example.betapp.dto.LoginResponse;
 import com.example.betapp.dto.RegisterRequest;
+import com.example.betapp.dto.UserResponse;
 import com.example.betapp.entity.RoleEntity;
 import com.example.betapp.entity.UserEntity;
 import com.example.betapp.enums.RolesEnum;
@@ -10,7 +11,10 @@ import com.example.betapp.repository.UserRepository;
 import com.example.betapp.security.JwtService;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.Map;
 
 @Service
 public class UserService {
@@ -154,4 +159,50 @@ public class UserService {
             messageSource.getMessage("SUCCESS_USER_DELETED", null, locale)
     );
   }
+
+  @Transactional(readOnly = true)
+  public ResponseEntity<?> getCurrentUser() {
+    Locale locale = LocaleContextHolder.getLocale();
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+    if (authentication == null || !authentication.isAuthenticated()
+            || "anonymousUser".equals(authentication.getPrincipal())) {
+      // Brak zalogowanego użytkownika / brak poprawnego tokena
+      String msg = messageSource.getMessage(
+              "ERROR_INVALID_AUTHORIZATION",
+              null,
+              locale
+      );
+
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+              .body(Map.of(
+                      "error", "ERROR_INVALID_AUTHORIZATION",
+                      "message", msg
+              ));
+    }
+
+    String email = authentication.getName();
+
+    Optional<UserEntity> userOpt = userRepository.findByEmail(email);
+
+    if (userOpt.isEmpty()) {
+      String msg = messageSource.getMessage(
+              "ERROR_USER_NOT_AVAILABLE",
+              null,
+              locale
+      );
+
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+              .body(Map.of(
+                      "error", "ERROR_USER_NOT_AVAILABLE",
+                      "message", msg
+              ));
+    }
+
+    UserEntity user = userOpt.get();
+    UserResponse response = new UserResponse(user.getUsername(), user.getEmail(), user.getCreatedAt());
+
+    return ResponseEntity.ok(response);
+  }
+
 }

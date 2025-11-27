@@ -2,7 +2,8 @@
   "general": {
     "unexpectedServerError": "Nieoczekiwany błąd serwera.",
     "serverUnreachable": "Nie można się skomunikować z sewerem. Spróbuj ponownie później.",
-    "error": "Błąd"
+    "error": "Błąd",
+    "loading": "Ładowanie..."
   },
   "login": {
     "title": "Witaj z powrotem",
@@ -136,7 +137,8 @@
       "faq": "FAQ",
       "login": "Zaloguj",
       "register": "Zarejestruj się",
-      "logout": "Wyloguj się"
+      "logout": "Wyloguj się",
+      "account": "Moje konto"
     }
   },
   "privacyPolicy": {
@@ -188,5 +190,11 @@
         "text": "W celu uzyskania dodatkowych informacji prosimy o kontakt z naszym działem finansowym pod adresem refunds@betapp.com."
       }
     }
+  },
+    "account": {
+    "title": "Informacje o koncie",
+    "name": "Nazwa konta",
+    "email": "Adres e-mail",
+    "creationDate": "Data założenia konta"
   }
 }

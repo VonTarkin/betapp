@@ -1,9 +1,7 @@
 com\example\betapp\repository\RoleRepository.class
-com\example\betapp\security\JwtService.class
 com\example\betapp\enums\RolesEnum.class
-com\example\betapp\dto\LoginResponse.class
+com\example\betapp\dto\UserResponse.class
 com\example\betapp\config\SecurityConfig.class
-com\example\betapp\controller\UserController.class
 com\example\betapp\dto\LoginRequest.class
 com\example\betapp\entity\UserEntity.class
 com\example\betapp\service\UserService.class
@@ -11,7 +9,12 @@ com\example\betapp\TestController.class
 com\example\betapp\entity\RoleEntity$RoleEntityBuilder.class
 com\example\betapp\config\AppConfig.class
 com\example\betapp\entity\RoleEntity.class
-com\example\betapp\repository\UserRepository.class
-com\example\betapp\entity\UserEntity$UserEntityBuilder.class
+com\example\betapp\security\CustomUserDetailsService.class
 com\example\betapp\dto\RegisterRequest.class
 com\example\betapp\BetAppApplication.class
+com\example\betapp\security\JwtService.class
+com\example\betapp\dto\LoginResponse.class
+com\example\betapp\controller\UserController.class
+com\example\betapp\security\JwtAuthenticationFilter.class
+com\example\betapp\repository\UserRepository.class
+com\example\betapp\entity\UserEntity$UserEntityBuilder.class

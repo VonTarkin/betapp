@@ -137,7 +137,8 @@
       "faq": "FAQ",
       "login": "Login",
       "register": "Register",
-      "logout": "Log out"
+      "logout": "Log out",
+      "account": "My account"
     }
   },
   "privacyPolicy": {
@@ -189,5 +190,11 @@
         "text": "For more details, please email our finance department at refunds@betapp.com."
       }
     }
+  },
+  "account": {
+    "title": "Account Information",
+    "name": "Account Name",
+    "email": "Email Address",
+    "creationDate": "Account Creation Date"
   }
 }
