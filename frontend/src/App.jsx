@@ -10,6 +10,7 @@ import RefundPolicyPage from "./pages/RefundPolicyPage";
 import Navbar from "./components/Navbar";
 import AccountPage from "./pages/AccountPage"; // ← NOWE
 import { useNavigate } from "react-router-dom";
+import CreateMatchPage from "./pages/CreateMatchPage";
 
 export default function App() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function App() {
           path="/login"
           element={<LoginPage onLoginSuccess={handleLoginSuccess} />}
         />
+        <Route path="/CreateMatch" element={<CreateMatchPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/privacypolicy" element={<PrivacyPolicyPage />} />
         <Route path="/refundpolicy" element={<RefundPolicyPage />} />

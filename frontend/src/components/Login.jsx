@@ -37,7 +37,9 @@ const handleSubmit = async (e) => {
     });
 
     const data = await response.json();
+    console.log("RAW RESPONSE:", data);
     console.log("TOKEN:", data.token);
+    
 
     if (response.ok) {
       // I'm supposed to save the token I guess.

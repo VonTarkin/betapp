@@ -138,7 +138,8 @@
       "login": "Zaloguj",
       "register": "Zarejestruj się",
       "logout": "Wyloguj się",
-      "account": "Moje konto"
+      "account": "Moje konto",
+      "creatematch": "Stwórz mecz"
     }
   },
   "privacyPolicy": {

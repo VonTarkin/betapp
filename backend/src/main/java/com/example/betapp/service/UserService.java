@@ -167,7 +167,6 @@ public class UserService {
 
     if (authentication == null || !authentication.isAuthenticated()
             || "anonymousUser".equals(authentication.getPrincipal())) {
-      // Brak zalogowanego użytkownika / brak poprawnego tokena
       String msg = messageSource.getMessage(
               "ERROR_INVALID_AUTHORIZATION",
               null,

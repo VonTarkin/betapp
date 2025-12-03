@@ -4,7 +4,20 @@ import "./Navbar.css";
 import { t } from "../i18n/i18n";
 import { useLanguage } from "../i18n/LanguageContext";
 
+//Decode token to see the role later, is this good? Idk lol, my iq is in the low 20s
+function decodeToken(token) {
+  try {
+    return JSON.parse(atob(token.split(".")[1]));
+  } catch (e) {
+    return null;
+  }
+}
+
 export default function Navbar({ isAuthenticated, onLogout }) {
+  const token = localStorage.getItem("authToken");
+  const decoded = token ? decodeToken(token) : null;
+  const role = decoded?.role || null; 
+
   const { lang, changeLanguage } = useLanguage();
   const [open, setOpen] = useState(false);
 
@@ -48,6 +61,11 @@ export default function Navbar({ isAuthenticated, onLogout }) {
         <div className="nav-links">
           {isAuthenticated ? (
             <>
+            {role === "ROLE_ADMIN" && (
+              <Link to="/CreateMatch" className="nav-link">
+              {t("navbar.links.creatematch")}
+              </Link>
+            )}
             <span
               className="nav-link"
               onClick={onLogout}

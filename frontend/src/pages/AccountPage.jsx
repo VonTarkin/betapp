@@ -58,7 +58,6 @@ export default function AccountPage() {
           showError(msg);
 
           if (res.status === 401) {
-            // np. ERROR_INVALID_AUTHORIZATION
             localStorage.removeItem("authToken");
             navigate("/login");
           }

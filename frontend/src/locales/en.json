@@ -2,7 +2,8 @@
   "general": {
     "unexpectedServerError": "Unexpected server error.",
     "serverUnreachable": "Unable to communicate with the server. Please try again later.",
-    "error": "error"
+    "error": "error",
+    "loading": "Loading..."
   },
   "login": {
     "title": "Welcome back",
@@ -138,7 +139,8 @@
       "login": "Login",
       "register": "Register",
       "logout": "Log out",
-      "account": "My account"
+      "account": "My account",
+      "creatematch": "Create match"
     }
   },
   "privacyPolicy": {

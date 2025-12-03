@@ -9,7 +9,7 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     i18nSetLanguage(lang);
-  }, []);
+  }, [lang]);
 
   const changeLanguage = (newLang) => {
     i18nSetLanguage(newLang);
