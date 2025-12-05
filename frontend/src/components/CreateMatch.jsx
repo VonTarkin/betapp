@@ -27,25 +27,54 @@ export default function CreateMatch({ onMatchCreated }) {
       .catch((err) => console.error(t("createMatch.errors.errorFetchingCountries"), err));
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!teamA || !teamB || !date) {
-      setError(t("createMatch.errors.allFieldsRequired"));
-      return;
-    }
-    if (teamA === teamB) {
-      setError(t("createMatch.errors.teamsMustBeDifferent"));
-      return;
-    }
-    setError("");
-    const newMatch = { id: Date.now(), teamA, teamB, date };
-    onMatchCreated?.(newMatch);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!teamA || !teamB || !date) {
+    setError(t("createMatch.errors.allFieldsRequired"));
+    return;
+  }
+  if (teamA === teamB) {
+    setError(t("createMatch.errors.teamsMustBeDifferent"));
+    return;
+  }
+  const matchRequestBody = {
+    country1: teamA,
+    country2: teamB,
+    scoreCountry1: null,
+    scoreCountry2: null,
+    matchDate: date,
+  };
+
+  try {
+    const token = localStorage.getItem("authToken");
+    const response = await fetch("http://localhost:8080/api/matches/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify(matchRequestBody),
+    });
+
+    const message = await response.text();
+    setError(message);
+    onMatchCreated?.({
+      country1: teamA,
+      country2: teamB,
+      matchDate: date,
+    });
+
     setTeamA("");
     setTeamB("");
     setSearchA("");
     setSearchB("");
     setDate("");
-  };
+  } catch (err) {
+    setError(t("general.serverUnreachable"));
+  }
+};
+
 
   const filteredCountriesA = countries.filter((c) =>
     c.toLowerCase().includes(searchA.toLowerCase())

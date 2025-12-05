@@ -26,12 +26,12 @@ public class MatchController {
   }
 
   @GetMapping
-  public ResponseEntity<List<MatchEntity>> getAllMatches() {
+  public ResponseEntity<?> getAllMatches() {
     return matchService.getAllMatches();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<MatchEntity> getMatchById(@PathVariable Long id) {
+  public ResponseEntity<?> getMatchById(@PathVariable Long id) {
     return matchService.getMatchById(id);
   }
 

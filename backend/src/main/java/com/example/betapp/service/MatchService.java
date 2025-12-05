@@ -1,14 +1,23 @@
 package com.example.betapp.service;
 
 import com.example.betapp.dto.MatchRequest;
+import com.example.betapp.dto.UpdateMatchScoreRequest;
+import com.example.betapp.entity.MatchEntity;
 import com.example.betapp.repository.MatchRepository;
 import com.example.betapp.security.JwtService;
-import org.apache.coyote.Response;
-import org.aspectj.bridge.Message;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 
 @Service
 public class MatchService {
@@ -24,8 +33,106 @@ public class MatchService {
   }
 
   @Transactional
-  public ResponseEntity<String> createMatch(MatchRequest matchRequest) {
-    //Todo: Do I want to do any restraints here? Matches could happen simultaneously. Atm I will abstain here, I guess.
+  public ResponseEntity<String> createMatch(MatchRequest req) {
+    Locale locale = LocaleContextHolder.getLocale();
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
+    if (auth == null || !auth.isAuthenticated()) {
+      return ResponseEntity.status(HttpStatus.FORBIDDEN)
+              .body(messageSource.getMessage("ERROR_LACK_OF_PERMISSION", null, locale));
+    }
+    boolean isAdmin = auth.getAuthorities().stream()
+            .map(GrantedAuthority::getAuthority)
+            .anyMatch("ROLE_ADMIN"::equals);
+
+    if (!isAdmin) {
+      return ResponseEntity.status(HttpStatus.FORBIDDEN)
+              .body(messageSource.getMessage("ERROR_LACK_OF_PERMISSION", null, locale));
+    }
+
+    MatchEntity newMatch = MatchEntity.builder()
+            .country1(req.getCountry1())
+            .country2(req.getCountry2())
+            .matchDate(req.getMatchDate())
+            .scoreCountry1(null)
+            .scoreCountry2(null)
+            .build();
+
+    matchRepository.save(newMatch);
+
+    return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(messageSource.getMessage("SUCCESS_MATCH_CREATED", null, locale));
+  }
+
+  public ResponseEntity<?> getAllMatches() {
+    List<MatchEntity> matches = matchRepository.findAll();
+    return ResponseEntity.ok(matches);
+  }
+
+  public ResponseEntity<?> getMatchById(Long id) {
+    Locale locale = LocaleContextHolder.getLocale();
+
+    return matchRepository.findById(id)
+            .<ResponseEntity<?>>map(ResponseEntity::ok)
+            .orElseGet(() -> ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(messageSource.getMessage("ERROR_MATCH_NOT_FOUND", null, locale)));
+  }
+
+  @Transactional
+  public ResponseEntity<String> updateMatchScore(Long id, UpdateMatchScoreRequest req) {
+    Locale locale = LocaleContextHolder.getLocale();
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+    String role = auth.getAuthorities()
+            .stream()
+            .findFirst()
+            .map(GrantedAuthority::getAuthority)
+            .orElse(null);
+
+    if(!Objects.equals(role, "ROLE_ADMIN")) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+              .body(messageSource.getMessage("ERROR_LACK_OF_PERMISSION",null, locale));
+    }
+
+
+    return matchRepository.findById(id)
+            .map(match -> {
+              match.setScoreCountry1(req.getScoreCountry1());
+              match.setScoreCountry2(req.getScoreCountry2());
+              matchRepository.save(match);
+
+              return ResponseEntity.ok((messageSource.getMessage("SUCCESS_MATCH_EDITED",null, locale)));
+            })
+            .orElseGet(() ->
+                    ResponseEntity.status(HttpStatus.NOT_FOUND)
+                            .body(messageSource.getMessage("ERROR_MATCH_NOT_FOUND",null, locale)));
+  }
+
+  @Transactional
+  public ResponseEntity<String> deleteMatch(Long id) {
+    Locale locale = LocaleContextHolder.getLocale();
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+    String role = auth.getAuthorities()
+            .stream()
+            .findFirst()
+            .map(GrantedAuthority::getAuthority)
+            .orElse(null);
+
+    if(!Objects.equals(role, "ROLE_ADMIN")) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+              .body(messageSource.getMessage("ERROR_LACK_OF_PERMISSION",null, locale));
+    }
+
+    return matchRepository.findById(id)
+            .map(match -> {
+              matchRepository.delete(match);
+              return ResponseEntity.ok((messageSource.getMessage("SUCCESS_MATCH_DELETED",null, locale)));
+            })
+            .orElseGet(() ->
+                    ResponseEntity.status(HttpStatus.NOT_FOUND)
+                            .body(messageSource.getMessage("ERROR_MATCH_NOT_FOUND",null, locale)));
   }
 }
