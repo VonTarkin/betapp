@@ -140,7 +140,8 @@
       "register": "Register",
       "logout": "Log out",
       "account": "My account",
-      "creatematch": "Create match"
+      "creatematch": "Create match",
+      "matches": "Matches"
     }
   },
   "privacyPolicy": {

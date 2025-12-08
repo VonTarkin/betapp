@@ -1,34 +1,110 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MatchList.css";
 import { useTranslation } from "../i18n/LanguageContext";
+import Notification from "./Notification";
 
-
-//Todo, we will be fetching that from B.E.
 export default function MatchList() {
-  const { t } = useTranslation();
-  const matches = [
-    { id: 1, teamA: "Country 1", teamB: "Country 2" },
-    { id: 2, teamA: "Country 3", teamB: "Country 4" },
-    { id: 3, teamA: "Country 5", teamB: "Country 6" },
-    { id: 4, teamA: "Country 7", teamB: "Country 8" },
-  ];
+  const { t, lang } = useTranslation();
+  const [matches, setMatches] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // --- NOTIFICATION (tak jak w Login) ---
+  const [notif, setNotif] = useState({
+    message: "",
+    type: "info",
+    visible: false,
+  });
+
+  const showNotification = (message, type = "info") => {
+    setNotif({ message, type, visible: true });
+  };
+  // --- KONIEC NOTIFICATION ---
+
+  useEffect(() => {
+    const fetchMatches = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/matches", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept-Language": lang,
+          },
+        });
+
+        if (!response.ok) {
+          let errorMessage = t("general.unexpectedServerError");
+
+          try {
+            const errorData = await response.json();
+            if (errorData && errorData.message) {
+              errorMessage = errorData.message;
+            }
+          } catch (_) {
+            // jeśli body nie jest JSON-em, olewamy
+          }
+
+          showNotification(errorMessage, "error");
+          setLoading(false);
+          return;
+        }
+
+        let data = await response.json();
+
+        // sortowanie po dacie meczu – od najbliższej
+        data.sort((a, b) => new Date(a.matchDate) - new Date(b.matchDate));
+
+        setMatches(data);
+      } catch (err) {
+        console.error("Error fetching matches:", err);
+        showNotification(t("general.serverUnreachable"), "error");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMatches();
+  }, [lang, t]); // showNotification nie musi być w deps
+
+  if (loading) {
+    return <p>{t("incomingMatches.loading")}</p>;
+  }
 
   return (
-    <div className="match-list-wrapper">
-      <h2 className="match-list-header">{t("incomingMatches.title")}</h2>
-      <ul className="match-list">
-        {matches.map((match) => (
-          <li key={match.id} className="match-item">
-            <div className="match-details">
-              <img src="images/question_mark.png" alt={`${match.teamA} flag`} />
-              <span>{match.teamA}</span>
-              <span>-</span>
-              <span>{match.teamB}</span>
-              <img src="images/question_mark.png" alt={`${match.teamB} flag`} />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <section className="match-list-section">
+      <div className="match-list-wrapper">
+        <h2 className="match-list-header">{t("incomingMatches.title")}</h2>
+
+        <ul className="match-list">
+          {matches.map((match, index) => (
+            <li key={index} className="match-item">
+              <div className="match-details">
+                <img
+                  src="images/question_mark.png"
+                  alt={`${match.country1} flag`}
+                />
+                <span>{match.country1}</span>
+
+                <span>-</span>
+
+                <span>{match.country2}</span>
+                <img
+                  src="images/question_mark.png"
+                  alt={`${match.country2} flag`}
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {notif.visible && (
+        <Notification
+          message={notif.message}
+          type={notif.type}
+          visible={notif.visible}
+          onClose={() => setNotif((prev) => ({ ...prev, visible: false }))}
+        />
+      )}
+    </section>
   );
 }

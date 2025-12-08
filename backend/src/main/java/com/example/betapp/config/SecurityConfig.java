@@ -33,7 +33,7 @@ public class SecurityConfig {
             .cors(cors -> {})
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/api/users/register", "/api/users/login", "/api/matches/create").permitAll()
+                    .requestMatchers("/api/users/register", "/api/users/login", "/api/matches/create", "api/matches").permitAll()
                     .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

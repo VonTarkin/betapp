@@ -40,6 +40,9 @@ export default function Navbar({ isAuthenticated, onLogout }) {
           <Link to="/faq" className="nav-link">
             {t("navbar.links.faq")}
           </Link>
+          <Link to="/matches" className="nav-link">
+                {t("navbar.links.matches")}
+          </Link>
         </div>
 
         <div className="lang-dropdown">
@@ -66,15 +69,15 @@ export default function Navbar({ isAuthenticated, onLogout }) {
               {t("navbar.links.creatematch")}
               </Link>
             )}
+            <Link to="/account" className="nav-link">
+                {t("navbar.links.account")}
+            </Link>
             <span
               className="nav-link"
               onClick={onLogout}
             >
               {t("navbar.links.logout")}
             </span>
-            <Link to="/account" className="nav-link">
-                {t("navbar.links.account")}
-            </Link>
             </>
             
           ) : (

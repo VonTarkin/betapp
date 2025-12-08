@@ -1,6 +1,7 @@
 package com.example.betapp.service;
 
 import com.example.betapp.dto.MatchRequest;
+import com.example.betapp.dto.MatchResponse;
 import com.example.betapp.dto.UpdateMatchScoreRequest;
 import com.example.betapp.entity.MatchEntity;
 import com.example.betapp.repository.MatchRepository;
@@ -65,20 +66,29 @@ public class MatchService {
             .body(messageSource.getMessage("SUCCESS_MATCH_CREATED", null, locale));
   }
 
-  public ResponseEntity<?> getAllMatches() {
+  public ResponseEntity<List<MatchResponse>> getAllMatches() {
     List<MatchEntity> matches = matchRepository.findAll();
-    return ResponseEntity.ok(matches);
+    List<MatchResponse> response = matches.stream()
+            .map(MatchResponse::new)
+            .toList();
+
+    return ResponseEntity.ok(response);
   }
 
   public ResponseEntity<?> getMatchById(Long id) {
     Locale locale = LocaleContextHolder.getLocale();
 
-    return matchRepository.findById(id)
-            .<ResponseEntity<?>>map(ResponseEntity::ok)
-            .orElseGet(() -> ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body(messageSource.getMessage("ERROR_MATCH_NOT_FOUND", null, locale)));
+    MatchEntity match = matchRepository.findById(id).orElse(null);
+
+    if (match == null) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+              messageSource.getMessage("ERROR_MATCH_NOT_FOUND", null, locale));
+    }
+
+    MatchResponse response = new MatchResponse(match);
+    return ResponseEntity.ok(response);
   }
+
 
   @Transactional
   public ResponseEntity<String> updateMatchScore(Long id, UpdateMatchScoreRequest req) {

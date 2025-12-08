@@ -1,6 +1,7 @@
 package com.example.betapp.controller;
 
 import com.example.betapp.dto.MatchRequest;
+import com.example.betapp.dto.MatchResponse;
 import com.example.betapp.dto.UpdateMatchScoreRequest;
 import com.example.betapp.entity.MatchEntity;
 import com.example.betapp.entity.UserEntity;
@@ -26,7 +27,7 @@ public class MatchController {
   }
 
   @GetMapping
-  public ResponseEntity<?> getAllMatches() {
+  public ResponseEntity<List<MatchResponse>> getAllMatches() {
     return matchService.getAllMatches();
   }
 

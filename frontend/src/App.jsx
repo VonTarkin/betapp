@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import AccountPage from "./pages/AccountPage"; // ← NOWE
 import { useNavigate } from "react-router-dom";
 import CreateMatchPage from "./pages/CreateMatchPage";
+import MatchesPage from "./pages/MatchesPage";
 
 export default function App() {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/matches" element={<MatchesPage />} />
         <Route
           path="/login"
           element={<LoginPage onLoginSuccess={handleLoginSuccess} />}
