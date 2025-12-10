@@ -8,7 +8,6 @@ export default function MatchList() {
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // --- NOTIFICATION (tak jak w Login) ---
   const [notif, setNotif] = useState({
     message: "",
     type: "info",
@@ -18,7 +17,6 @@ export default function MatchList() {
   const showNotification = (message, type = "info") => {
     setNotif({ message, type, visible: true });
   };
-  // --- KONIEC NOTIFICATION ---
 
   useEffect(() => {
     const fetchMatches = async () => {
@@ -40,7 +38,6 @@ export default function MatchList() {
               errorMessage = errorData.message;
             }
           } catch (_) {
-            // jeśli body nie jest JSON-em, olewamy
           }
 
           showNotification(errorMessage, "error");
@@ -49,8 +46,6 @@ export default function MatchList() {
         }
 
         let data = await response.json();
-
-        // sortowanie po dacie meczu – od najbliższej
         data.sort((a, b) => new Date(a.matchDate) - new Date(b.matchDate));
 
         setMatches(data);
@@ -63,48 +58,47 @@ export default function MatchList() {
     };
 
     fetchMatches();
-  }, [lang, t]); // showNotification nie musi być w deps
+  }, [lang, t]);
 
   if (loading) {
     return <p>{t("incomingMatches.loading")}</p>;
   }
 
   return (
-    <section className="match-list-section">
-      <div className="match-list-wrapper">
-        <h2 className="match-list-header">{t("incomingMatches.title")}</h2>
+  <section className="match-list-section">
+    <div className="match-list-wrapper">
+      <h2 className="match-list-header">{t("incomingMatches.title")}</h2>
 
-        <ul className="match-list">
-          {matches.map((match, index) => (
-            <li key={index} className="match-item">
-              <div className="match-details">
-                <img
-                  src="images/question_mark.png"
-                  alt={`${match.country1} flag`}
-                />
-                <span>{match.country1}</span>
+      <ul className="match-list">
+        {matches.map((match, index) => (
+          <li key={index} className="match-item">
+            <div className="match-details">
+              <img
+                src="images/question_mark.png"
+                alt={`${match.country1} flag`}
+              />
+              <span>{match.country1}</span>
 
-                <span>-</span>
+              <span>-</span>
 
-                <span>{match.country2}</span>
-                <img
-                  src="images/question_mark.png"
-                  alt={`${match.country2} flag`}
-                />
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+              <span>{match.country2}</span>
+              <img
+                src="images/question_mark.png"
+                alt={`${match.country2} flag`}
+              />
+            </div>
 
-      {notif.visible && (
-        <Notification
-          message={notif.message}
-          type={notif.type}
-          visible={notif.visible}
-          onClose={() => setNotif((prev) => ({ ...prev, visible: false }))}
-        />
-      )}
-    </section>
-  );
+            <a
+              className="match-info"
+              href={`/matches/${match.id}`}
+            >
+              {t("incomingMatches.matchdetails")}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
+
 }

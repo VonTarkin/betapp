@@ -56,7 +56,8 @@
   "refundPolicy": "Polityka Zwrotów"
  },
   "incomingMatches": {
-    "title": "Nadchodzące mecze"
+    "title": "Nadchodzące mecze",
+    "matchdetails": "Szczegóły"
   },
   "hero": {
   "slides": [
@@ -198,5 +199,11 @@
     "name": "Nazwa konta",
     "email": "Adres e-mail",
     "creationDate": "Data założenia konta"
-  }
+  },
+  "matchDetails": {
+  "notFound": "Mecz nie znaleziony",
+  "back": "Wróć",
+  "title": "Szczegóły meczu",
+  "date": "Data meczu"
+}
 }

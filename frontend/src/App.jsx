@@ -42,6 +42,8 @@ export default function App() {
       />
 
       <Routes>
+        <Route path="/matches/:id" element={<MatchesPage />} />
+
         <Route path="/account" element={<AccountPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

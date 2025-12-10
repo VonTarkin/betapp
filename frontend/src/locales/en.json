@@ -57,7 +57,8 @@
   "refundPolicy": "Refund Policy"
  },
   "incomingMatches": {
-    "title": "Incoming Matches"
+    "title": "Incoming Matches",
+    "matchdetails": "Details"
   },
   "hero": {
   "slides": [
@@ -199,5 +200,12 @@
     "name": "Account Name",
     "email": "Email Address",
     "creationDate": "Account Creation Date"
+  },
+  "matchDetails": {
+    "notFound": "Match not found",
+    "back": "Back",
+    "title": "Match Details",
+    "date": "Match Date"
+
   }
 }

@@ -10,6 +10,7 @@ C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\d
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\RegisterRequest.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\UpdateMatchScoreRequest.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\UserResponse.java
+C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\entity\BetEntity.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\entity\MatchEntity.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\entity\RoleEntity.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\entity\UserEntity.java

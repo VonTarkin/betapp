@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @Setter
 public class MatchResponse {
 
+  private long id;
+
   private String country1;
   private String country2;
 
@@ -20,6 +22,7 @@ public class MatchResponse {
   private LocalDateTime matchDate;
 
   public MatchResponse(MatchEntity match) {
+    this.id = match.getId();
     this.country1 = match.getCountry1();
     this.country2 = match.getCountry2();
 
@@ -31,7 +34,8 @@ public class MatchResponse {
   }
 
   public MatchResponse(String country1, String country2, Integer scoreCountry1, Integer scoreCountry2,
-                       LocalDateTime createdAt, LocalDateTime matchDate) {
+                       LocalDateTime createdAt, LocalDateTime matchDate, long id) {
+    this.id = id;
     this.country1 = country1;
     this.country2 = country2;
 

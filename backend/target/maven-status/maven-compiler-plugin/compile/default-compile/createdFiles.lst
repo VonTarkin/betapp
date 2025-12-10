@@ -2,6 +2,7 @@ com\example\betapp\service\MatchService.class
 com\example\betapp\repository\RoleRepository.class
 com\example\betapp\dto\MatchResponse.class
 com\example\betapp\enums\RolesEnum.class
+com\example\betapp\entity\BetEntity$BetEntityBuilder.class
 com\example\betapp\dto\UserResponse.class
 com\example\betapp\config\SecurityConfig.class
 com\example\betapp\dto\LoginRequest.class
@@ -25,4 +26,5 @@ com\example\betapp\dto\LoginResponse.class
 com\example\betapp\controller\UserController.class
 com\example\betapp\security\JwtAuthenticationFilter.class
 com\example\betapp\repository\UserRepository.class
+com\example\betapp\entity\BetEntity.class
 com\example\betapp\entity\UserEntity$UserEntityBuilder.class
