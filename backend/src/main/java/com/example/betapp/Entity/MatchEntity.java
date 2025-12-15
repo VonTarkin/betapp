@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -28,6 +29,10 @@ public class MatchEntity {
   @NotBlank
   @Column(nullable = false, length = 50)
   private String country2;
+
+  @NotNull
+  @Column(nullable = false)
+  private BigDecimal odds;
 
   //Can be null cause we'll make it work later lol.
   @Column

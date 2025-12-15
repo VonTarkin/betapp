@@ -79,6 +79,8 @@
   "createMatch": {
     "title": "Create New Match",
     "dateLabel": "Match date:",
+    "odds": "Odds",
+    "oddsPlaceHolder": "1",
     "countryA": {
       "label": "Country A:",
       "placeholder": "Search country..."
@@ -91,7 +93,8 @@
     "errors": {
       "allFieldsRequired": "All fields are required.",
       "teamsMustBeDifferent": "Teams must be different!",
-      "errorFetchingCountries": "Error fetching countries."
+      "errorFetchingCountries": "Error fetching countries.",
+      "invalidOdds": "Invalid odds"
     }
   },
   "register": {
@@ -205,7 +208,20 @@
     "notFound": "Match not found",
     "back": "Back",
     "title": "Match Details",
-    "date": "Match Date"
-
+    "date": "Match Date",
+    "placeABet": "Place a Bet",
+    "odds": "Odds"
+  },
+  "matchBetMenu": {
+    "betType" : "Bet Type",
+    "win": "Win",
+    "draw": "Draw",
+    "loss": "Loss",
+    "fillCorrectly": "Fill the form correctly",
+    "title": "Place a bet",
+    "currency": "Currency",
+    "stake": "Stake",
+    "stakePlaceholder": "Enter amount",
+    "odds": "Odds"
   }
 }

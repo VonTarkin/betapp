@@ -8,10 +8,11 @@ import RegisterPage from "./pages/RegisterPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import RefundPolicyPage from "./pages/RefundPolicyPage";
 import Navbar from "./components/Navbar";
-import AccountPage from "./pages/AccountPage"; // ← NOWE
+import AccountPage from "./pages/AccountPage";
 import { useNavigate } from "react-router-dom";
 import CreateMatchPage from "./pages/CreateMatchPage";
 import MatchesPage from "./pages/MatchesPage";
+import MatchBetPage from "./pages/MatchBetPage";
 
 export default function App() {
   const navigate = useNavigate();
@@ -42,8 +43,8 @@ export default function App() {
       />
 
       <Routes>
+        <Route path="/matches/:id/bet" element={<MatchBetPage/>} />
         <Route path="/matches/:id" element={<MatchesPage />} />
-
         <Route path="/account" element={<AccountPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

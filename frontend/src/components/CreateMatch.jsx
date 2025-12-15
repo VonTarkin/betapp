@@ -11,6 +11,7 @@ export default function CreateMatch({ onMatchCreated }) {
   const [teamB, setTeamB] = useState("");
   const [date, setDate] = useState("");
   const [error, setError] = useState("");
+  const [odds, setOdds] = useState("");
 
   const [showDropdownA, setShowDropdownA] = useState(false);
   const [showDropdownB, setShowDropdownB] = useState(false);
@@ -38,9 +39,14 @@ const handleSubmit = async (e) => {
     setError(t("createMatch.errors.teamsMustBeDifferent"));
     return;
   }
+  if (!odds || Number(odds) <= 0) {
+  setError(t("createMatch.errors.invalidOdds"));
+  return;
+  }
   const matchRequestBody = {
     country1: teamA,
     country2: teamB,
+    odds: Number(odds),
     scoreCountry1: null,
     scoreCountry2: null,
     matchDate: date,
@@ -70,6 +76,7 @@ const handleSubmit = async (e) => {
     setSearchA("");
     setSearchB("");
     setDate("");
+    setOdds("");
   } catch (err) {
     setError(t("general.serverUnreachable"));
   }
@@ -86,7 +93,7 @@ const handleSubmit = async (e) => {
   return (
     <div className="create-match-wrapper">
       <h2 className="create-match-header">{t("createMatch.title")}</h2>
-      <form className="create-match-form" onSubmit={handleSubmit}>
+      <form className="create-match-form" noValidate onSubmit={handleSubmit}>
         <label className="datetime-label">
           {t("createMatch.dateLabel")}
           <div className="datetime-wrapper">
@@ -167,6 +174,18 @@ const handleSubmit = async (e) => {
             </ul>
           )}
         </label>
+
+        <label>
+            {t("createMatch.odds")}
+            <input
+              type="number"
+              step="0.01"
+              min="1.01"
+              placeholder={t("createMatch.oddsPlaceHolder")}
+              value={odds}
+              onChange={(e) => setOdds(e.target.value)}
+            />
+         </label>
 
         {error && <div className="error-text">{error}</div>}
 

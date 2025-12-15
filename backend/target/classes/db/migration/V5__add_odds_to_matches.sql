@@ -1,0 +1,9 @@
+ALTER TABLE matches
+ADD COLUMN odds NUMERIC(10, 2);
+
+UPDATE matches
+SET odds = 1.00
+WHERE odds IS NULL;
+
+ALTER TABLE matches
+ALTER COLUMN odds SET NOT NULL;

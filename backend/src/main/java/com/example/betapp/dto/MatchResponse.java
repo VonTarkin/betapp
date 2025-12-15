@@ -4,6 +4,7 @@ import com.example.betapp.entity.MatchEntity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,6 +15,8 @@ public class MatchResponse {
 
   private String country1;
   private String country2;
+
+  private BigDecimal odds;
 
   private Integer scoreCountry1;
   private Integer scoreCountry2;
@@ -26,6 +29,8 @@ public class MatchResponse {
     this.country1 = match.getCountry1();
     this.country2 = match.getCountry2();
 
+    this.odds = match.getOdds();
+
     this.scoreCountry1 = match.getScoreCountry1();
     this.scoreCountry2 = match.getScoreCountry2();
 
@@ -33,11 +38,13 @@ public class MatchResponse {
     this.matchDate = match.getMatchDate();
   }
 
-  public MatchResponse(String country1, String country2, Integer scoreCountry1, Integer scoreCountry2,
+  public MatchResponse(String country1, String country2, BigDecimal odds, Integer scoreCountry1, Integer scoreCountry2,
                        LocalDateTime createdAt, LocalDateTime matchDate, long id) {
     this.id = id;
     this.country1 = country1;
     this.country2 = country2;
+
+    this.odds = odds;
 
     this.scoreCountry1 = scoreCountry1;
     this.scoreCountry2 = scoreCountry2;

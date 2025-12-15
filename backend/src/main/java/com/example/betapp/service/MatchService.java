@@ -54,6 +54,7 @@ public class MatchService {
     MatchEntity newMatch = MatchEntity.builder()
             .country1(req.getCountry1())
             .country2(req.getCountry2())
+            .odds(req.getOdds())
             .matchDate(req.getMatchDate())
             .scoreCountry1(null)
             .scoreCountry2(null)

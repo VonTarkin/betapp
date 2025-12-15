@@ -31,11 +31,11 @@ public class BetEntity {
 
   @NotNull
   @Column(nullable = false)
-  private BigDecimal odds;
+  private BigDecimal amount;
 
   @NotNull
   @Column(nullable = false)
-  private BigDecimal amount;
+  private BigDecimal odds;
 
   @CreationTimestamp
   @Column(name = "created_at", updatable = false)

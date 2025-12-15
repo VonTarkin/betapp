@@ -1,8 +1,11 @@
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\BetAppApplication.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\config\AppConfig.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\config\SecurityConfig.java
+C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\controller\BetController.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\controller\MatchController.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\controller\UserController.java
+C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\BetRequest.java
+C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\BetResponse.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\LoginRequest.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\LoginResponse.java
 C:\Users\jakla\Desktop\java\js\betapp\backend\src\main\java\com\example\betapp\dto\MatchRequest.java

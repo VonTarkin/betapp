@@ -1,6 +1,8 @@
+com\example\betapp\dto\BetRequest.class
 com\example\betapp\service\MatchService.class
 com\example\betapp\repository\RoleRepository.class
 com\example\betapp\dto\MatchResponse.class
+com\example\betapp\dto\BetResponse.class
 com\example\betapp\enums\RolesEnum.class
 com\example\betapp\entity\BetEntity$BetEntityBuilder.class
 com\example\betapp\dto\UserResponse.class

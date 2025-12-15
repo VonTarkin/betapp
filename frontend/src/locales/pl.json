@@ -78,6 +78,8 @@
   "createMatch": {
     "title": "Utwórz Nowy Mecz",
     "dateLabel": "Data meczu:",
+    "odds": "Kurs",
+    "oddsPlaceHolder": "1",
     "countryA": {
       "label": "Kraj A:",
       "placeholder": "Szukaj kraju..."
@@ -90,7 +92,8 @@
     "errors": {
       "allFieldsRequired": "Wszystkie pola są wymagane.",
       "teamsMustBeDifferent": "Drużyny muszą być różne!",
-      "errorFetchingCountries": "Błąd podczas pobierania listy krajów."
+      "errorFetchingCountries": "Błąd podczas pobierania listy krajów.",
+      "invalidOdds": "Niepoprawny Kurs"
     }
   },
   "register": {
@@ -204,6 +207,20 @@
   "notFound": "Mecz nie znaleziony",
   "back": "Wróć",
   "title": "Szczegóły meczu",
-  "date": "Data meczu"
+  "date": "Data meczu",
+  "placeABet": "Postaw zakład",
+  "Odds": "Kurs"
+  },
+  "matchBetMenu": {
+  "betType": "Typ zakładu",
+  "win": "Wygrana",
+  "draw": "Remis",
+  "loss": "Przegrana",
+  "fillCorrectly": "Uzupełnij formularz poprawnie",
+  "title": "Postaw zakład",
+  "currency": "Waluta",
+  "stake": "Stawka",
+  "stakePlaceholder": "Wpisz kwotę",
+  "odds": "Kurs"
 }
 }

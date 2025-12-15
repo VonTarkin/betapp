@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,6 +18,9 @@ public class MatchRequest {
 
   @NotBlank
   private String country2;
+
+  @NotNull
+  private BigDecimal odds;
 
   private Integer scoreCountry1;
 

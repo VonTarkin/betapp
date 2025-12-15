@@ -150,8 +150,25 @@ export default function MatchDetails() {
             </div>
           </div>
 
+          <div className="meta-row">
+            <span className="meta-label">
+              {t("matchDetails.odds") || "Odds"}:
+            </span>
+              <span className="meta-value">
+              {match.odds != null ? match.odds : "-"}
+            </span>
+          </div>
+
+
           <div className="match-actions">
-            <button className="back-button" onClick={() => navigate(-1)}>
+            <button
+            className="action-button"
+            onClick={() => navigate(`/matches/${id}/bet`)}
+            >
+              {t("matchDetails.placeABet") || "Place a Bet"}
+              </button>
+
+            <button className="action-button" onClick={() => navigate(-1)}>
               {t("matchDetails.back") || "Back"}
             </button>
           </div>
